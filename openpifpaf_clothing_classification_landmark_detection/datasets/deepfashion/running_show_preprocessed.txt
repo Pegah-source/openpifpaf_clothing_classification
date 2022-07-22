@@ -1,0 +1,2 @@
+all the arguments necessary to run the show_preprocessed.
+python3 show_preprocessed.py --deepfashion-augmentation-level 1 --deepfashion-train-annotations /Users/pegahkhayatan/Desktop/classification_pifpaf/side_experiments/dataset/train_annotations_MSCOCO_style.json --deepfashion-train-image-dir /Users/pegahkhayatan/Desktop/classification_pifpaf/side_experiments/dataset/img_train --batch-size 10
