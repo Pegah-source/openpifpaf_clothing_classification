@@ -15,7 +15,7 @@ class SingleAttributeGenerator(AttributeGenerator):
 
     def generate_encoding_from_original(self, image, anns, meta):
 
-        n_targets = self.config.meta.n_channels
+        '''n_targets = self.config.meta.n_channels
         self.targets = np.full(
             (n_targets),
             0,
@@ -28,4 +28,6 @@ class SingleAttributeGenerator(AttributeGenerator):
         print('this is the shape of the target ', np_targets.shape)
         
         # return torch.from_numpy(meta['image_category'])
-        return np_targets
+        return np_targets'''
+
+        return int(meta['image_category'])

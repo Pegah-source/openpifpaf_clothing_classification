@@ -40,6 +40,7 @@ class AttributeField(openpifpaf.network.heads.HeadNetwork):
         print('the in_features ', in_features, ' and out_features ', out_features)
         self.conv = torch.nn.Conv2d(in_features, out_features,
                                     kernel_size=1, padding=0, dilation=1)
+        self.SoftmaxLayer = torch.nn.Softmax(dim=1)
 
         if (
             (self.detection_bias_prior is not None)
@@ -82,6 +83,7 @@ class AttributeField(openpifpaf.network.heads.HeadNetwork):
         print(' and output before conv ', x)
         x = self.conv(x)
         x = torch.amax(x, dim = (2, 3))
+        x = self.SoftmaxLayer(x)
         print('output shape after conv ', x.size())
         print(' and output after conv ', x)
 

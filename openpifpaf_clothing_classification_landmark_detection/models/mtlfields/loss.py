@@ -38,10 +38,10 @@ class CategoryLoss(torch.nn.Module):
             return torch.nn.BCEWithLogitsLoss(reduction='none')
         elif self.meta.n_channels > 1:
             loss_module = torch.nn.CrossEntropyLoss(reduction='none')
-            return lambda x, t: loss_module(
-                    x, t.to(torch.float).squeeze(1)).unsqueeze(1)
             '''return lambda x, t: loss_module(
-                    x, t.to(torch.long).squeeze(1)).unsqueeze(1)'''
+                    x, t.to(torch.float).squeeze(1)).unsqueeze(1)'''
+            return lambda x, t: loss_module(
+                    x, t.to(torch.long).squeeze(1)).unsqueeze(1)
            
     @classmethod
     def cli(cls, parser: argparse.ArgumentParser):
@@ -75,8 +75,8 @@ class CategoryLoss(torch.nn.Module):
         if t is None:
             return None
 
-        print('this is the output of the network {} and the input {}'.format(t, x))
-        c_x = x.shape[1]
+        print('size of the target {} and size of the prediction {} '.format(t.size(), x.size()))
+        '''c_x = x.shape[1]
         x = x.reshape(-1, c_x)
         c_t = t.shape[1]
         t = t.reshape(-1, c_t)
@@ -90,7 +90,22 @@ class CategoryLoss(torch.nn.Module):
             return None
 
         x = x[mask, :]
-        t = t[mask, :]
+        t = t[mask, :]'''
+
+
+        c_x = x.shape[1]
+        x = x.reshape(-1, c_x)
+        c_t = t.shape[0]
+        t = t.reshape(c_t, -1)
+
+        mask = torch.isnan(t).any(1).bitwise_not_()
+        print('this is the mask ', mask, '  and its shape ', mask.shape)
+        if not torch.any(mask):
+            return None
+
+        x = x[mask, :]
+        t = t[mask]
+
         loss = self.loss_function(x, t)
         
 
