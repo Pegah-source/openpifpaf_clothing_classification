@@ -77,7 +77,7 @@ class BBoxCrop(openpifpaf.transforms.Preprocess):
         # croping the bbox, first preprocessing
         # so the image should be like x and y and bbox is like the same
         #exp_image = np.transpose(image, (1, 2, 0))
-        exp_image = np.array(image)
+        '''exp_image = np.array(image)
         exp_image = torch.tensor(exp_image, dtype = float)
         print('this is the size ', exp_image.size())
         # first standardize the data
@@ -88,7 +88,7 @@ class BBoxCrop(openpifpaf.transforms.Preprocess):
         
         exp_image = exp_image.int()
         plt.imshow(exp_image)
-        plt.show()
+        plt.show()'''
         print('cropping the bbox, first step of preprocessing')
 
         landmarks = anns[0]['keypoints']

@@ -10,7 +10,7 @@ from ...datasets import headmeta
 import openpifpaf
 from .class_decoder import ClassDecoder
 from ...datasets import attribute
-from ...datasets.combinedAnnotation import AnnotationCombined
+from ...datasets.deepfashion.combinedAnnotation import AnnotationCombined
 
 
 LOG = logging.getLogger(__name__)

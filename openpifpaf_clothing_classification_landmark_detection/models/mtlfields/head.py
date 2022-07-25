@@ -31,10 +31,16 @@ class AttributeField(openpifpaf.network.heads.HeadNetwork):
         LOG.debug('%s config: dataset %s, attribute %s',
                   meta.name, meta.dataset, meta.attribute)
 
+        print('%s config: dataset %s, attribute %s',
+                  meta.name, meta.dataset, meta.attribute)
+        
         # Convolutions
         out_features = meta.n_channels * meta.upsample_stride**2
+
+        print('the in_features ', in_features, ' and out_features ', out_features)
         self.conv = torch.nn.Conv2d(in_features, out_features,
                                     kernel_size=1, padding=0, dilation=1)
+
         if (
             (self.detection_bias_prior is not None)
             and (meta.attribute == 'confidence')
@@ -72,7 +78,12 @@ class AttributeField(openpifpaf.network.heads.HeadNetwork):
     def forward(self, x):
         if isinstance(x, (list, tuple)):
             x = x[self.meta.head_index]
+        print('output shape before conv ', x.size())
+        print(' and output before conv ', x)
         x = self.conv(x)
+        x = torch.amax(x, dim = (2, 3))
+        print('output shape after conv ', x.size())
+        print(' and output after conv ', x)
 
         # Upsampling
         if self.upsample_op is not None:

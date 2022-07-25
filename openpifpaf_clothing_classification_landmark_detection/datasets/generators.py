@@ -23,6 +23,9 @@ class SingleAttributeGenerator(AttributeGenerator):
         )
 
         self.targets[int(meta['image_category'])] = 1
+
+        np_targets = torch.from_numpy(self.targets)
+        print('this is the shape of the target ', np_targets.shape)
         
         # return torch.from_numpy(meta['image_category'])
-        return torch.from_numpy(self.targets)
+        return np_targets
