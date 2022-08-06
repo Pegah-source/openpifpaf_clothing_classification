@@ -2,6 +2,7 @@ import copy
 
 from .attribute import DeepfashionType, DEEPFASHION_ATTRIBUTE_METAS
 from .. import annotation
+import numpy as np
 
 
 class DeepfashionClothingAnnotation(annotation.AnnotationAttr):
@@ -14,8 +15,9 @@ class DeepfashionClothingAnnotation(annotation.AnnotationAttr):
 
     def inverse_transform(self, meta):
         pred = copy.deepcopy(self)
-        # no matter what pre-processing we perform, the class remains the same!!(what?? :D )
-        # we should inverse the bbox cropping here, after inversing the other
+        left_top = np.array([meta['original_left'], meta['original_top']]).astype(np.float64)
+        left_top = np.array([left_top]*8).reshape((8, 2))
+        pred.data += left_top
         return pred
 
 

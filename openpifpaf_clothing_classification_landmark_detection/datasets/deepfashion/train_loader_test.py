@@ -183,7 +183,6 @@ class Deepfashion_module(openpifpaf.datasets.DataModule):
         ])
     
     def train_loader(self):
-        print('thisis the batch size ', self.batch_size)
         train_data = DeepfashionDataset(
             image_dir=self.train_image_dir,
             ann_file=self.train_annotations,

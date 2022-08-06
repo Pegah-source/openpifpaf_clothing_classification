@@ -79,13 +79,13 @@ class AttributeField(openpifpaf.network.heads.HeadNetwork):
     def forward(self, x):
         if isinstance(x, (list, tuple)):
             x = x[self.meta.head_index]
-        print('output shape before conv ', x.size())
-        print(' and output before conv ', x)
+        #print('output shape before conv ', x.size())
+        #print(' and output before conv ', x)
         x = self.conv(x)
         x = torch.amax(x, dim = (2, 3))
         x = self.SoftmaxLayer(x)
-        print('output shape after conv ', x.size())
-        print(' and output after conv ', x)
+        #print('output shape after conv ', x.size())
+        #print(' and output after conv ', x)
 
         # Upsampling
         if self.upsample_op is not None:

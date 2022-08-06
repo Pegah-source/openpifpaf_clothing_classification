@@ -24,7 +24,6 @@ ATTRIBUTE_METAS: Dict[str, Dict[ObjectType, list]] = {}
 # in our case the term (am['group'] in attributes[object_type]) would be right.
 def get_attribute_metas(dataset: str,
                         attributes: Dict[ObjectType, list]): # the list would be classification in our case
-    print('last place here is ', dataset, '    ', OBJECT_TYPES)
     assert dataset in OBJECT_TYPES
     assert dataset in ATTRIBUTE_METAS
     att_metas = []

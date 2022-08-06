@@ -41,15 +41,23 @@ class Deepfashion_module(openpifpaf.datasets.DataModule):
     train_image_dir = '../../../../scratch/izar/khayatan/deepfashion/img_train'
     val_image_dir = '../../../../scratch/izar/khayatan/deepfashion/img_valid'
     eval_image_dir = '../../../../scratch/izar/khayatan/deepfashion/img_test'''
+    eval_image_dir = '../../../../scratch/izar/khayatan/deepfashion/img_test'
+    eval_annotations = '../../../../scratch/izar/khayatan/deepfashion/test_annotations_MSCOCO_style.json'
+
+
+    train_annotations = '../scratch/deepfashion/train_annotations_MSCOCO_style.json'
+    val_annotations  = '../scratch/deepfashion/valid_annotations_MSCOCO_style.json'
+    train_image_dir =  '../scratch/deepfashion/img_train'
+    val_image_dir =  '../scratch/deepfashion/img_valid'
     # /pegah/vita/work/../scratch
 
 
-    train_annotations = 'dataset/train_annotations_MSCOCO_style.json'
+    '''train_annotations = 'dataset/train_annotations_MSCOCO_style.json'
     val_annotations = 'dataset/valid_annotations_MSCOCO_style.json'
     eval_annotations = 'dataset/test_annotations_MSCOCO_style.json'
     train_image_dir = 'dataset/img_train'
     val_image_dir = 'dataset/img_valid'
-    eval_image_dir = 'dataset/img_test'
+    eval_image_dir = 'dataset/img_test'''
 
     # Tasks
     taks_group = ['classification']

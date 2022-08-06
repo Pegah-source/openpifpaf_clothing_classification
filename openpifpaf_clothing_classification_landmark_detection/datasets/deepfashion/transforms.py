@@ -89,8 +89,7 @@ class BBoxCrop(openpifpaf.transforms.Preprocess):
         exp_image = exp_image.int()
         plt.imshow(exp_image)
         plt.show()'''
-        print('cropping the bbox, first step of preprocessing')
-
+        
         landmarks = anns[0]['keypoints']
         x_1 = anns[0]['bbox'][0]
         y_1 = anns[0]['bbox'][1]

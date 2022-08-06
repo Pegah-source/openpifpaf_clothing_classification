@@ -75,7 +75,6 @@ class CategoryLoss(torch.nn.Module):
         if t is None:
             return None
 
-        print('size of the target {} and size of the prediction {} '.format(t.size(), x.size()))
         '''c_x = x.shape[1]
         x = x.reshape(-1, c_x)
         c_t = t.shape[1]
@@ -99,7 +98,7 @@ class CategoryLoss(torch.nn.Module):
         t = t.reshape(c_t, -1)
 
         mask = torch.isnan(t).any(1).bitwise_not_()
-        print('this is the mask ', mask, '  and its shape ', mask.shape)
+        #print('this is the mask ', mask, '  and its shape ', mask.shape)
         if not torch.any(mask):
             return None
 

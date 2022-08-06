@@ -113,7 +113,6 @@ class DeepfashionDataset(torch.utils.data.Dataset):
             image = Image.open(f).convert('RGB')
             
         image_1 = np.array(image)
-        print('this is the image ', image_1)
 
         meta = {
             'dataset': 'deepfashion',
